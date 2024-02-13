@@ -71,7 +71,7 @@ function App() {
     );
     console.log('Is Daytime:', isDaytime);
     console.log('Is Clear Sky:', isClearSky);
-    return isDaytime && isClearSky ? 'dark' : 'light';
+    return isDaytime && isClearSky ? 'light' : 'dark';
   };
   useEffect(() => {
     dispatch(fetchAllQuestions());
