@@ -11,7 +11,7 @@ import {
 } from '@chatscope/chat-ui-kit-react';
 import logo from '../../assets/icon.png';
 
-const API_KEY = process.env.REACT_APP_API_KEY;
+const API_KEY = process.env.REACT_APP_API_KEY1;
 
 const systemMessage = {
   role: 'system',
