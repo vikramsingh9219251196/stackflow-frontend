@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import './chatbot.css';
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import {
@@ -12,6 +12,8 @@ import {
 import logo from '../../assets/icon.png';
 
 const API_KEY = process.env.REACT_APP_API_KEY1;
+
+
 
 const systemMessage = {
   role: 'system',
@@ -62,16 +64,21 @@ const Chatbot = () => {
         },
         body: JSON.stringify(apiRequestBody),
       });
-
+    
       const data = await response.json();
-
-      setMessages((prevMessages) => [
-  ...prevMessages,
-  {
-    message: data.choices && data.choices.length > 0 ? data.choices[0].message.content : 'No response from ChatGPT',
-    sender: 'ChatGPT',
-  },
-]);
+    
+      // Check if data.choices is defined and has at least one element
+      if (data.choices && data.choices.length > 0) {
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          {
+            message: data.choices[0].message.content,
+            sender: 'ChatGPT',
+          },
+        ]);
+      } else {
+        console.error('No choices found in response data:', data);
+      }
     } catch (error) {
       console.error('Error processing message:', error);
     } finally {
