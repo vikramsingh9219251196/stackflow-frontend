@@ -66,12 +66,12 @@ const Chatbot = () => {
       const data = await response.json();
 
       setMessages((prevMessages) => [
-        ...prevMessages,
-        {
-          message: data.choices[0].message.content,
-          sender: 'ChatGPT',
-        },
-      ]);
+  ...prevMessages,
+  {
+    message: data.choices && data.choices.length > 0 ? data.choices[0].message.content : 'No response from ChatGPT',
+    sender: 'ChatGPT',
+  },
+]);
     } catch (error) {
       console.error('Error processing message:', error);
     } finally {
