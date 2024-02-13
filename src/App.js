@@ -72,7 +72,6 @@ function App() {
     weatherData.conditions.toLowerCase() === 'haze');
 
   console.log('Is Daytime:', isDaytime);
-  console.log('Is Clear Sky:', isClearSky);
   return isDaytime && isClearSky ? 'light' : 'dark';
 };
   useEffect(() => {
