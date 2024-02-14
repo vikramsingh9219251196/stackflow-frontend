@@ -13,6 +13,7 @@ import OTPForm from "./components/otpform/OtpForm";
 
 
 function App() {
+  
   const dispatch = useDispatch();
   const [theme, setTheme] = useState('light');
   const [slideIn, setSlideIn] = useState(true);
@@ -60,20 +61,21 @@ function App() {
     console.log('Weather Data:', response.data);
     return response.data; 
   };
- const determineTheme = (currentTime, weatherData) => {
-  const isDaytime = currentTime >= 6 && currentTime < 18;
-
-  // Check if weatherData is defined and has a conditions property
-  const isClearSky = weatherData && weatherData.conditions &&
-    (weatherData.conditions.toLowerCase() === 'mist' ||
-    weatherData.conditions.toLowerCase() === 'few clouds' ||
-    weatherData.conditions.toLowerCase() === 'clear sky' ||
-    weatherData.conditions.toLowerCase() === 'broken clouds' ||
-    weatherData.conditions.toLowerCase() === 'haze');
-
-  console.log('Is Daytime:', isDaytime);
-  return isDaytime && isClearSky ? 'light' : 'dark';
-};
+  const determineTheme = (currentTime, weatherData) => {
+    const isDaytime = currentTime >= 6 && currentTime < 18;
+  
+    // Check if weatherData is defined and has a conditions property
+    const isClearSky = weatherData && weatherData.conditions &&
+      (weatherData.conditions.toLowerCase() === 'mist' ||
+      weatherData.conditions.toLowerCase() === 'few clouds' ||
+      weatherData.conditions.toLowerCase() === 'clear sky' ||
+      weatherData.conditions.toLowerCase() === 'broken clouds' ||
+      weatherData.conditions.toLowerCase() === 'haze');
+  
+    console.log('Is Daytime:', isDaytime);
+    console.log('Is Clear Sky:', isClearSky);
+    return isDaytime && isClearSky ? 'light' : 'dark';
+  };
   useEffect(() => {
     dispatch(fetchAllQuestions());
     dispatch(fetchAllUsers());
