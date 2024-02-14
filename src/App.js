@@ -55,7 +55,7 @@ function App() {
 
 
   const getWeatherData = async (latitude, longitude) => {
-    const response = await axios.get(`https://stackflow-frontend.vercel.app/api/weather/${latitude}/${longitude}`); 
+   const response = await axios.get(`/api/weather/${latitude}/${longitude}`); 
     console.log('Weather Data:', response);
     return response.data; 
   };
