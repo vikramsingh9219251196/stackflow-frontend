@@ -11,9 +11,7 @@ import Chatbot from "./components/Chatbot/Chatbot";
 import { Route,Routes } from "react-router-dom";
 import OTPForm from "./components/otpform/OtpForm";
 
-
 function App() {
-  
   const dispatch = useDispatch();
   const [theme, setTheme] = useState('light');
   const [slideIn, setSlideIn] = useState(true);
@@ -56,27 +54,20 @@ function App() {
   };
 
 
- const getWeatherData = async (latitude, longitude) => {
-  try {
-    const response = await axios.get(`/api/weather/${latitude}/${longitude}`);
+  const getWeatherData = async (latitude, longitude) => {
+    const response = await axios.get(`/api/weather/${latitude}/${longitude}`); 
     console.log('Weather Data:', response.data);
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching weather data:', error);
-    throw error; 
-  }
-};
+    return response.data; 
+  };
   const determineTheme = (currentTime, weatherData) => {
     const isDaytime = currentTime >= 6 && currentTime < 18;
-  
-    // Check if weatherData is defined and has a conditions property
-    const isClearSky = weatherData && weatherData.conditions &&
-      (weatherData.conditions.toLowerCase() === 'mist' ||
+    const isClearSky = weatherData && (
+      weatherData.conditions.toLowerCase() === 'mist' ||
       weatherData.conditions.toLowerCase() === 'few clouds' ||
       weatherData.conditions.toLowerCase() === 'clear sky' ||
-      weatherData.conditions.toLowerCase() === 'broken clouds' ||
-      weatherData.conditions.toLowerCase() === 'haze');
-  
+      weatherData.conditions.toLowerCase() === 'broken clouds'||
+      weatherData.conditions.toLowerCase() === 'haze'
+    );
     console.log('Is Daytime:', isDaytime);
     console.log('Is Clear Sky:', isClearSky);
     return isDaytime && isClearSky ? 'light' : 'dark';
@@ -106,6 +97,7 @@ function App() {
         <Routes>
           <Route path="/chatbot" element={<Chatbot/>}/>
           <Route path="/otpverify" element={<OTPForm/>}/>
+          <Route path="/subscription" element={<OTPForm/>}/>
         </Routes>
       </Router>
       
