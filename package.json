@@ -2,7 +2,7 @@
   "name": "client2",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5000/",
+  "proxy": "https://stackflow-backend.onrender.com/",
   "dependencies": {
     "@chatscope/chat-ui-kit-react": "^1.10.1",
     "@fortawesome/fontawesome-svg-core": "^6.3.0",
