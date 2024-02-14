@@ -36,6 +36,15 @@
     width: 100%;
     max-width: 100%;
   }
- 
+  .home-container-2.light{
+  width: 100%;
+  position: absolute;
+  }
+  .home-container-2light{
+    position:absolute;
+    }
+    .home-container-2.dark {
+    position: absolute;
+    }
 
 }
