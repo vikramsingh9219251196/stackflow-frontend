@@ -56,11 +56,16 @@ function App() {
   };
 
 
-  const getWeatherData = async (latitude, longitude) => {
-    const response = await axios.get(`/api/weather/${latitude}/${longitude}`); 
+ const getWeatherData = async (latitude, longitude) => {
+  try {
+    const response = await axios.get(`/api/weather/${latitude}/${longitude}`);
     console.log('Weather Data:', response.data);
-    return response.data; 
-  };
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching weather data:', error);
+    throw error; 
+  }
+};
   const determineTheme = (currentTime, weatherData) => {
     const isDaytime = currentTime >= 6 && currentTime < 18;
   
